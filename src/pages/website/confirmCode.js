@@ -27,6 +27,7 @@ const ConfirmCode = () => {
     };
     useEffect(() => {
         getPickUp(params.pickId, auth, dispatch, setPickup);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     console.log(pickUp);
     return (
