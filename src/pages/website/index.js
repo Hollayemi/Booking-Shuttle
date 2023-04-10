@@ -2,10 +2,11 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import BookBus from '../../components/website/bookModal';
 import HomeWrapper from '../../components/website/HomeWrapper';
-import AvailablePickup from './available_pickup';
+// import AvailablePickup from './available_pickup';
 const Home = () => {
     const { userData } = useSelector((state) => state.reducer.loginReducer);
     const myData = userData && userData.data ? userData.data : null;
+
     return (
         <HomeWrapper userData={myData}>
             <div className="flex items-center pt-10 md:pt-0 flex-col sm:flex-row justify-evenly absolute top-0 left-0 h-full w-full">

@@ -29,6 +29,11 @@ const initialState = {
 const UserSlice = createSlice({
     name: 'aauaLogin',
     initialState,
+    reducers: {
+        userLogout: () => {
+            return initialState;
+        },
+    },
     extraReducers: {
         [shuttleLogin.pending]: (state) => {
             return {
@@ -56,6 +61,7 @@ const UserSlice = createSlice({
 });
 
 // export states
+export const { userLogout } = UserSlice.actions;
 export default UserSlice.reducer;
 
 /*
@@ -75,7 +81,7 @@ export const myLogin = (formData, navigate, dispatch) => {
                     {res.message}
                 </Message>,
                 {
-                    placement: 'topEnd',
+                    placement: 'topCenter',
                 }
             );
             if (res.status === 'success') {
@@ -88,7 +94,7 @@ export const myLogin = (formData, navigate, dispatch) => {
                     No Connection
                 </Message>,
                 {
-                    placement: 'topEnd',
+                    placement: 'topCenter',
                 }
             );
         });

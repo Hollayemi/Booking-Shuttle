@@ -27,7 +27,7 @@ export const newAccount = (formData, dispatch) => {
                     {res.message}
                 </Message>,
                 {
-                    placement: 'topEnd',
+                    placement: 'topCenter',
                 }
             );
         })
@@ -37,7 +37,7 @@ export const newAccount = (formData, dispatch) => {
                     No Connection
                 </Message>,
                 {
-                    placement: 'topEnd',
+                    placement: 'topCenter',
                 }
             );
         });

@@ -18,7 +18,7 @@ const AvailablePickup = () => {
     }, [userData, dispatch, setData]);
 
     return (
-        <HomeWrapper>
+        <HomeWrapper userData={userData}>
             <section className="absolute top-0 left-0 w-full">
                 <div className="flex justify-center mt-20 pt-5 px-2">
                     <div className=" w-[700px] bg-slate-300 shadow-lg">

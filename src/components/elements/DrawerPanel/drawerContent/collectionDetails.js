@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { getOnebyId } from '../../../../state/slices/home';
+import React from 'react';
+// import { useDispatch } from 'react-redux';
+// import { getOnebyId } from '../../../../state/slices/home';
 import Loading from '../../Loading';
 
 const CollectionDetails = ({ id }) => {

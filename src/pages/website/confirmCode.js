@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaCheck, FaTimes } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import InputGroup from '../../components/elements/Input/InputGroup';
 import HomeWrapper from '../../components/website/HomeWrapper';
 import { confirmCode } from '../../state/slices/pickup/confirm';
+import { getPickUp } from '../../state/slices/pickup/pickLocations';
 
 const ConfirmCode = () => {
     const params = useParams();
     const [code, setCode] = useState('');
+    const [pickUp, setPickup] = useState({});
     const [rideCodeConf, setRideCodeConf] = useState('');
     const dispatch = useDispatch();
     const { userData } = useSelector((state) => state.reducer.loginReducer);
@@ -23,8 +25,12 @@ const ConfirmCode = () => {
             setRideCodeConf
         );
     };
+    useEffect(() => {
+        getPickUp(params.pickId, auth, dispatch, setPickup);
+    }, []);
+    console.log(pickUp);
     return (
-        <HomeWrapper>
+        <HomeWrapper userData={userData}>
             <section className="absolute top-0 left-0 w-full">
                 <div className="flex justify-center items-center flex-col md:flex-row mt-20 pt-5 px-2">
                     <div className="w-[320px] md:w-[350px]">

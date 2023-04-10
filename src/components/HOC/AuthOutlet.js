@@ -9,7 +9,7 @@ const AuthOutlet = ({ to }) => {
     );
     let auth = false;
     if (status === REQUEST_STATUS.FULFILLED) {
-        auth = userData.data.register_as === 'Driver' ? true : false;
+        auth = userData.data.register_as === 'Student' ? true : false;
     }
     return auth ? <Outlet /> : <Navigate to="/signin" />;
 };

@@ -9,7 +9,7 @@ const Notification = ({ data, otpData, store }) => {
     const dispatch = useDispatch();
     useEffect(() => {
         deleteNotifications(dispatch, otpData, store);
-    }, []);
+    }, [dispatch, otpData, store]);
 
     const iconArr = { product: <FaFile /> };
     return (

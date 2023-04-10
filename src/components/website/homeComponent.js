@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaHamburger } from 'react-icons/fa';
+import { FaHamburger, FaSignOutAlt } from 'react-icons/fa';
 import { Drawer } from 'rsuite';
+import { userLogout } from '../../state/slices/auth/Login';
 
 export const Header = ({ userData }) => {
     const [openNav, setNav] = useState(false);
@@ -18,19 +19,30 @@ export const Header = ({ userData }) => {
                     <MyLinks
                         link="/pickup-locations"
                         title="Available Pick-ups"
-                        mystyle={`${
-                            !userData
-                                ? ''
-                                : userData.register_as !== 'Driver' && 'hidden'
-                        }`}
+                        // mystyle={`${
+                        //     !userData
+                        //         ? ''
+                        //         : userData.register_as !== 'Driver' && 'hidden'
+                        // }`}
                     />
                     <MyLinks link="/pickup-locations" title="History" />
-                    <MyLinks link="/signin" title="Login" auth />
-                    <MyLinks
-                        link="/create-account"
-                        title="Create account"
-                        auth
-                    />
+                    {!userData?._id ? (
+                        <>
+                            <MyLinks link="/signin" title="Login" auth />
+                            <MyLinks
+                                link="/create-account"
+                                title="Create account"
+                                auth
+                            />
+                        </>
+                    ) : (
+                        <div
+                            onClick={userLogout}
+                            className={`px-6 text-lg text-white py-1.5 cursor-pointer mx-0.5 rounded-sm hover:text-blue-200`}
+                        >
+                            <FaSignOutAlt />
+                        </div>
+                    )}
                 </div>
                 <i
                     onClick={() => setNav(!openNav)}
@@ -66,18 +78,29 @@ export const Header = ({ userData }) => {
                             mystyle="mb-2"
                         />
                         <div className="flex items-center">
-                            <MyLinks
-                                link="/signin"
-                                mystyle="mb-2"
-                                title="Login"
-                                auth
-                            />
-                            <MyLinks
-                                link="/create-account"
-                                title="Create account"
-                                auth
-                                mystyle="mb-2"
-                            />
+                            {!userData?._id ? (
+                                <>
+                                    <MyLinks
+                                        link="/signin"
+                                        mystyle="mb-2"
+                                        title="Login"
+                                        auth
+                                    />
+                                    <MyLinks
+                                        link="/create-account"
+                                        title="Create account"
+                                        auth
+                                        mystyle="mb-2"
+                                    />
+                                </>
+                            ) : (
+                                <div
+                                    onClick={userLogout}
+                                    className={`px-6 text-lg flex items-center text-white py-1.5 cursor-pointer mx-0.5 rounded-sm hover:text-blue-200`}
+                                >
+                                    Logout <FaSignOutAlt className="ml-3" />
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
