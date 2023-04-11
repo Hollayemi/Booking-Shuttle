@@ -69,7 +69,7 @@ const BookBus = ({ userData }) => {
 
     return (
         <section className="flex items-center justify-center">
-            <div className="w-full m-2 w-[350px] h-[400px] bg-white rounded-lg px-2 md:px-5 py-2">
+            <div className="m-2 w-[350px] h-[400px] bg-white rounded-lg px-2 md:px-5 py-2">
                 <div className="flex justify-between items-center my-4">
                     <h5 className="font-black text-md md:text-md text-black ml-2">
                         Book a bus faster
@@ -108,7 +108,7 @@ const BookBus = ({ userData }) => {
                             type="time"
                             required={true}
                             name="fName"
-                            className="p-1.5 border outline-none border-gray-200 text-gray-600 placeholder-text-xs text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 shadow-sm"
+                            className="border outline-none border-gray-200 text-gray-600 placeholder-text-xs text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 shadow-sm"
                             onChange={(e) =>
                                 updateValue(e.target.value, 'time')
                             }

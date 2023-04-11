@@ -15,7 +15,7 @@ export const Header = ({ userData }) => {
                         AAUA SHUTTLE
                     </h5>
                 </Link>
-                <div className="text-white flex justify-center hidden md:flex top-10">
+                <div className="text-white justify-center hidden md:flex top-10">
                     <MyLinks
                         link="/pickup-locations"
                         title="Available Pick-ups"
