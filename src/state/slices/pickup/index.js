@@ -18,6 +18,22 @@ const pickApi = createAsyncThunk('post/pickups', async (payload) => {
     return data;
 });
 
+const onlinePickApi = createAsyncThunk('post/pickups', async (payload) => {
+    const { data } = await martApi
+        .post('/payment-url', payload.body, {
+            headers: { auth: payload.auth },
+        })
+        .then((res) => {
+            console.log(res);
+            return res;
+        })
+        .catch((err) => {
+            return err.response;
+        });
+
+    return data;
+});
+
 const initialState = {
     userData: {},
     loading: false,
@@ -83,6 +99,22 @@ export const newPickup = (formData, auth, dispatch, setState) => {
             );
             if (res.status === 'success') {
                 setState(res.data);
+            }
+        })
+        .catch();
+};
+
+export const newPaystackPickup = (formData, auth, dispatch, navigate) => {
+    const payload = {
+        body: formData,
+        auth: auth,
+    };
+    dispatch(onlinePickApi(payload))
+        .then(unwrapResult)
+        .then((res) => {
+            if (res.status === 'success') {
+                window.location.replace(res.link);
+                navigate('/' + res.link);
             }
         })
         .catch();

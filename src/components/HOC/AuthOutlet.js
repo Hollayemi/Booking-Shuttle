@@ -7,6 +7,7 @@ const AuthOutlet = ({ to }) => {
     const { userData, status } = useSelector(
         (state) => state.reducer.loginReducer
     );
+    console.log(userData);
     let auth = false;
     if (status === REQUEST_STATUS.FULFILLED) {
         auth = userData.data.register_as === 'Student' ? true : false;

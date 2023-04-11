@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { InputRadio } from '../../components/elements/Input/InputFile';
 import InputGroup from '../../components/elements/Input/InputGroup';
 import { SelectPicker } from 'rsuite';
-import { newPickup } from '../../state/slices/pickup';
+import { newPickup, newPaystackPickup } from '../../state/slices/pickup';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ModalPanel from '../elements/ModalPanel';
@@ -47,6 +47,20 @@ const BookBus = ({ userData }) => {
                 auth,
                 dispatch,
                 setRideCode
+            );
+        } else {
+            navigate('/signin');
+        }
+    };
+
+    const payWithPaystack = () => {
+        if (userData) {
+            let auth = userData._id + ' ' + userData.accessToken;
+            newPaystackPickup(
+                { ...formData, userId: userData._id },
+                auth,
+                dispatch,
+                navigate
             );
         } else {
             navigate('/signin');
@@ -146,7 +160,10 @@ const BookBus = ({ userData }) => {
                 </div>
                 <div className="flex justify-end">
                     {formData.payment === 'Online' ? (
-                        <button className="h-9 w-36 mr-5 outline-none rounded-md shadow-md text-md font bg-blue-500 text-white">
+                        <button
+                            onClick={payWithPaystack}
+                            className="h-9 w-36 mr-5 outline-none rounded-md shadow-md text-md font bg-blue-500 text-white"
+                        >
                             Pay Now
                         </button>
                     ) : (
