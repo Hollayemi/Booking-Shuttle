@@ -34,6 +34,14 @@ const BookBus = ({ userData }) => {
         { value: 'Obj Gate', label: 'Obj Gate' },
         { value: 'ETF 750', label: 'ETF 750' },
         { value: 'Zenith Hostel', label: 'Zenith Hostel' },
+        { value: 'Main Gate', label: 'Main Gate' },
+        { value: 'Nelson Mandela Hall', label: 'Nelson Mandela Hall' },
+        { value: '30 CQ', label: '30 CQ' },
+        { value: 'Awo Hall', label: 'Awo Hall' },
+        { value: 'Faculty Of Education', label: 'Faculty Of Education' },
+        { value: 'Senate Building', label: 'Senate Building' },
+        { value: 'Guest House', label: 'Guest House' },
+        { value: 'Sport Complex', label: 'Sport Complex' },
     ];
     const destination = PickupLoactions.filter(
         (a) => a.value !== formData.pick_location
@@ -106,6 +114,8 @@ const BookBus = ({ userData }) => {
                         <h5 className="text-xs">Time</h5>
                         <input
                             type="time"
+                            max="18:00"
+                            min="6:00"
                             required={true}
                             name="fName"
                             className="border outline-none border-gray-200 text-gray-600 placeholder-text-xs text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 shadow-sm"

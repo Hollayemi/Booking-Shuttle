@@ -60,7 +60,7 @@ const Login = () => {
                                 Login
                             </button>
                         </form>
-                        <div className="w-full flex px-2 text-xs justify-between w-full mt-5 items-center">
+                        <div className="w-full flex px-2 text-xs justify-between mt-5 items-center">
                             <p className="text-sm cursor-pointer hover:text-blue-200 text-blue-400">
                                 create admin branch
                             </p>

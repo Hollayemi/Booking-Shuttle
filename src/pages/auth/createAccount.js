@@ -29,7 +29,7 @@ const Signup = () => {
 
     const RegType = [
         { value: 'Driver', label: 'Driver' },
-        { value: 'Student', label: 'Student' },
+        { value: 'Passenger', label: 'Passenger' },
     ];
 
     const signupHandler = (e) => {
@@ -82,13 +82,11 @@ const Signup = () => {
 
                             <input
                                 className={`${fixedStyle} ${
-                                    !formData.register_as && ' hidden'
-                                }`}
-                                placeholder={
                                     formData.register_as === 'Driver'
-                                        ? 'Enter your car number'
-                                        : 'Enter your matric number'
-                                }
+                                        ? ' block'
+                                        : ' hidden'
+                                }`}
+                                placeholder="Enter your car number"
                                 type="text"
                                 onChange={(e) =>
                                     updateValue(e.target.value, 'regId')
@@ -124,7 +122,7 @@ const Signup = () => {
                                 Sign up
                             </button>
 
-                            <div className="w-full flex px-2 mt-6 font-bold text-xs justify-between mt-2 items-center">
+                            <div className="w-full flex px-2 font-bold text-xs justify-between mt-2 items-center">
                                 <p className="text-sm text-blue-500">
                                     Already have account{' '}
                                 </p>
